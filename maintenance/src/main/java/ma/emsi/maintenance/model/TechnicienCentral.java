@@ -22,11 +22,12 @@ public class TechnicienCentral extends Technicien implements Serializable {
 	@JoinColumn(name="idEnteprise")
 	private Enteprise enteprise;
 
+	/*
 	//bi-directional one-to-one association to Technicien
 	@OneToOne
 	@JoinColumn(name="idUtilisateur")
 	private Technicien technicien;
-
+*/
 	public TechnicienCentral() {
 	}
 
@@ -38,13 +39,4 @@ public class TechnicienCentral extends Technicien implements Serializable {
 	public void setEnteprise(Enteprise enteprise) {
 		this.enteprise = enteprise;
 	}
-
-	public Technicien getTechnicien() {
-		return this.technicien;
-	}
-
-	public void setTechnicien(Technicien technicien) {
-		this.technicien = technicien;
-	}
-
 }
