@@ -5,6 +5,8 @@ import javax.persistence.*;
 import java.util.Set;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 /**
  * The persistent class for the Usine database table.
@@ -33,6 +35,7 @@ public class Usine implements Serializable {
 
 	//bi-directional many-to-one association to Utilisateur
 	@OneToMany(mappedBy="usine", fetch=FetchType.EAGER)
+	@JsonIgnore
 	private Set<Utilisateur> utilisateurs;
 
 	public Usine() {
