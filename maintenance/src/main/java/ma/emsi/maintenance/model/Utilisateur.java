@@ -50,6 +50,7 @@ public  abstract class Utilisateur implements Serializable {
 	this.prenom = prenom;
 }
 
+	
 	public int getIdUtilisateur() {
 		return this.idUtilisateur;
 	}

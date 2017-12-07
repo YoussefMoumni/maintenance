@@ -13,4 +13,6 @@ public interface UtilisateurService {
 	Utilisateur getUtilisateurByLogin(String login);
 	
 	void ajouterUtilisateur(Utilisateur U);
+
+	Utilisateur RechercheParLogin(String login);
 }

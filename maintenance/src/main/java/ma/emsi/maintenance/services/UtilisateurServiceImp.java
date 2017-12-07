@@ -23,13 +23,15 @@ public class UtilisateurServiceImp implements UtilisateurService {
 	}
 	@Override
 	public Utilisateur getUtilisateurByLogin(String login) {
-		return utilisateurRepository.findByLogin(login);
+		return utilisateurRepository.findBylogin(login);
 	}
 	@Override 
 	public List<Utilisateur> getUtilisateurs() {
 		return utilisateurRepository.findAll();
 	}
-	
-	
+	@Override 
+	public Utilisateur RechercheParLogin(String login) {
+		return utilisateurRepository.findBylogin(login);
+	}
 
 }
