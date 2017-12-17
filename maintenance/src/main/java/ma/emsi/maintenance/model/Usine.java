@@ -3,9 +3,11 @@ package ma.emsi.maintenance.model;
 import java.io.Serializable;
 import javax.persistence.*;
 import java.util.Set;
-import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 
 /**
@@ -13,7 +15,10 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
  * 
  */
 @Entity
-@NamedQuery(name="Usine.findAll", query="SELECT u FROM Usine u")
+@Table(name="usine")
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idUsine")
+
+//@NamedQuery(name="Usine.findAll", query="SELECT u FROM Usine u")
 public class Usine implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -31,6 +36,7 @@ public class Usine implements Serializable {
 
 	//bi-directional many-to-one association to Atelier
 	@OneToMany(mappedBy="usine", fetch=FetchType.EAGER)
+
 	private Set<Atelier> ateliers;
 
 	//bi-directional many-to-one association to Utilisateur

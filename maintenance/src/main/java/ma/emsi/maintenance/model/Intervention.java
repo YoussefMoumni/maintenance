@@ -34,7 +34,7 @@ public class Intervention implements Serializable {
 	//bi-directional many-to-one association to MCorrective
 	@ManyToOne(optional=false)
 	@JoinColumn(name="idMaintenance" ,insertable = false, updatable = false)
-	private MCorrective mcorrective;
+	private Maintenance maintenance;
 
 	//bi-directional many-to-one association to Technicien
 	@ManyToOne
@@ -78,13 +78,7 @@ public class Intervention implements Serializable {
 		this.dateRetour = dateRetour;
 	}
 
-	public MCorrective getMcorrective() {
-		return this.mcorrective;
-	}
 
-	public void setMcorrective(MCorrective mcorrective) {
-		this.mcorrective = mcorrective;
-	}
 
 	public Technicien getTechnicien() {
 		return this.technicien;

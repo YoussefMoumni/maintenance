@@ -2,6 +2,9 @@ package ma.emsi.maintenance.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.Set;
 
 
@@ -16,30 +19,52 @@ public class ChefAtelier extends Utilisateur implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 
-
-	private int idAtelier;
+	@OneToOne
+	@JoinColumn(name="idAtelier")
+	private Atelier atelier;
 
 	//bi-directional one-to-one association to Utilisateur
 	@OneToOne
 	@JoinColumn(name="idUtilisateur")
 	private Utilisateur utilisateur;
 
-	//bi-directional many-to-one association to MCorrective
+	//bi-directional many-to-one association to Maintenance
 	@OneToMany(mappedBy="chefAtelier", fetch=FetchType.EAGER)
-	private Set<MCorrective> mcorrectives;
+    private Set<Corrective> maintenances;
 
 	public ChefAtelier() {
 	}
 
 
+	
 
-	public int getIdAtelier() {
-		return this.idAtelier;
+	public Atelier getAtelier() {
+		return atelier;
 	}
 
-	public void setIdAtelier(int idAtelier) {
-		this.idAtelier = idAtelier;
+
+
+
+	public void setAtelier(Atelier atelier) {
+		this.atelier = atelier;
 	}
+
+
+
+
+	public Set<Corrective> getMaintenances() {
+		return maintenances;
+	}
+
+
+
+
+	public void setMaintenances(Set<Corrective> maintenances) {
+		this.maintenances = maintenances;
+	}
+
+
+
 
 	public Utilisateur getUtilisateur() {
 		return this.utilisateur;
@@ -49,26 +74,6 @@ public class ChefAtelier extends Utilisateur implements Serializable {
 		this.utilisateur = utilisateur;
 	}
 
-	public Set<MCorrective> getMcorrectives() {
-		return this.mcorrectives;
-	}
-
-	public void setMcorrectives(Set<MCorrective> mcorrectives) {
-		this.mcorrectives = mcorrectives;
-	}
-
-	public MCorrective addMcorrective(MCorrective mcorrective) {
-		getMcorrectives().add(mcorrective);
-		mcorrective.setChefAtelier(this);
-
-		return mcorrective;
-	}
-
-	public MCorrective removeMcorrective(MCorrective mcorrective) {
-		getMcorrectives().remove(mcorrective);
-		mcorrective.setChefAtelier(null);
-
-		return mcorrective;
-	}
+	
 
 }

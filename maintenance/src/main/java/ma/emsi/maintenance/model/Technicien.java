@@ -10,9 +10,9 @@ import java.util.Set;
  * 
  */
 @Entity
-@Table(name="Technicien")
 @Inheritance
 @DiscriminatorValue("T")
+
 //@NamedQuery(name="Technicien.findAll", query="SELECT t FROM Technicien t")
 public class Technicien extends Utilisateur implements Serializable {
 	private static final long serialVersionUID = 1L;

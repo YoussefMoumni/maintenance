@@ -6,4 +6,5 @@ import ma.emsi.maintenance.model.TechnicienCentral;
 
 public interface TechnicienCentralRepository extends JpaRepository<TechnicienCentral, Integer> {
 
+	
 }

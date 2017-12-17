@@ -3,6 +3,10 @@ package ma.emsi.maintenance.model;
 import java.io.Serializable;
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 
 /**
  * The persistent class for the Utilisateur database table.
@@ -13,7 +17,7 @@ import javax.persistence.*;
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 @Table(name="Utilisateur")
 @DiscriminatorColumn(name="type",discriminatorType=DiscriminatorType.STRING)
-
+@JsonIdentityInfo(generator=ObjectIdGenerators.PropertyGenerator.class, property="idUtilisateur")
 
 //@NamedQuery(name="Utilisateur.findAll", query="SELECT u FROM Utilisateur u")
 public  abstract class Utilisateur implements Serializable {
@@ -38,7 +42,7 @@ public  abstract class Utilisateur implements Serializable {
 	//bi-directional many-to-one association to Usine
 	@ManyToOne
 	@JoinColumn(name="idUsine")
-	private Usine usine;
+    private Usine usine;
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 	public Utilisateur() {
 	}

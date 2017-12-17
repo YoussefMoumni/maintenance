@@ -39,7 +39,7 @@ public class Machine implements Serializable {
 
 	//bi-directional many-to-one association to MCorrective
 	@OneToMany(mappedBy="machine", fetch=FetchType.EAGER)
-	private Set<MCorrective> mcorrectives;
+	private Set<Maintenance> maintenances;
 
 	public Machine() {
 	}
@@ -108,26 +108,26 @@ public class Machine implements Serializable {
 		this.productionDate = productionDate;
 	}
 
-	public Set<MCorrective> getMcorrectives() {
-		return this.mcorrectives;
+	public Set<Maintenance> getMaintenances() {
+		return this.maintenances;
 	}
 
-	public void setMcorrectives(Set<MCorrective> mcorrectives) {
-		this.mcorrectives = mcorrectives;
+	public void setMaintenances(Set<Maintenance> maintenances) {
+		this.maintenances = maintenances;
 	}
 
-	public MCorrective addMcorrective(MCorrective mcorrective) {
-		getMcorrectives().add(mcorrective);
-		mcorrective.setMachine(this);
+	public Maintenance addMcorrective(Maintenance maintenance) {
+		getMaintenances().add(maintenance);
+		maintenance.setMachine(this);
 
-		return mcorrective;
+		return maintenance;
 	}
 
-	public MCorrective removeMcorrective(MCorrective mcorrective) {
-		getMcorrectives().remove(mcorrective);
-		mcorrective.setMachine(null);
+	public Maintenance removeMcorrective(Maintenance maintenance) {
+		getMaintenances().remove(maintenance);
+		maintenance.setMachine(null);
 
-		return mcorrective;
+		return maintenance;
 	}
 
 }

@@ -2,7 +2,8 @@ package ma.emsi.maintenance.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
-import javax.persistence.ManyToOne;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 
 /**
@@ -23,7 +24,12 @@ public class Atelier implements Serializable {
 	
 	private String specialite;
 
+	//bi d one to chefatelier
+	@OneToOne(mappedBy="atelier")
+    private ChefAtelier chefatelier;
+	
 	//bi-directional many-to-one association to Usine
+	
 	@ManyToOne
 	@JoinColumn(name="idUsine")
 	private Usine usine;
