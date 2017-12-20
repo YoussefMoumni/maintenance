@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title> chef atelier</title>
+</head>
+<body>
+
+<table border="1">
+<tr>
+
+</tr>
+<tr th:each="m: ${machines}">
+<td th:text="${m.idMachine}"/>
+<td th:text="${m.code}"/>
+<td th:text="${m.marque}"/>
+ <td> <button > Declarer Une panne </button>  </td>
+
+</tr>
+</table>
+
+</body>
+</html>
+
+
+
+
+
