@@ -35,10 +35,9 @@ public  abstract class Utilisateur implements Serializable {
 	private String nom;
 
 	private String prenom;
-
-
-
-
+	@Column(insertable=false , updatable=false)
+	private String type;
+	
 	//bi-directional many-to-one association to Usine
 	@ManyToOne
 	@JoinColumn(name="idUsine")
@@ -55,6 +54,12 @@ public  abstract class Utilisateur implements Serializable {
 }
 
 	
+	public String getType() {
+		return type;
+	}
+	public void setType(String type) {
+		this.type = type;
+	}
 	public int getIdUtilisateur() {
 		return this.idUtilisateur;
 	}
@@ -102,5 +107,7 @@ public  abstract class Utilisateur implements Serializable {
 	public void setUsine(Usine usine) {
 		this.usine = usine;
 	}
+	
+	
 
 }
