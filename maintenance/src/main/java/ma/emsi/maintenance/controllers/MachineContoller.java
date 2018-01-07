@@ -16,7 +16,7 @@ import ma.emsi.maintenance.services.MachineService;
 
 @Controller
 @RequestMapping("machine") 
-@CrossOrigin(origins = "http://localhost:8888")
+@CrossOrigin(origins = {"http://localhost:8888" , "http://localhost:3000"})
 public class MachineContoller {
 
 	@Autowired
