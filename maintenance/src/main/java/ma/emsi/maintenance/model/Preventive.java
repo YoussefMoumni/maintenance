@@ -10,9 +10,13 @@ import javax.persistence.Inheritance;
 @DiscriminatorValue("P")
 public class Preventive  extends Maintenance  implements Serializable {
 
-	/**
-	 * 
-	 */
+
 	private static final long serialVersionUID = 1L;
 
+	public Preventive() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	
 }

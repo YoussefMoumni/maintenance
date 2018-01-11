@@ -37,8 +37,9 @@ public class Machine implements Serializable {
 	@Temporal(TemporalType.TIMESTAMP)
 	private Date productionDate;
 
-	//bi-directional many-to-one association to MCorrective
-	@OneToMany(mappedBy="machine", fetch=FetchType.EAGER)
+   //bi-directional many-to-one association to MCorrective
+    
+	@OneToMany(mappedBy="machine", fetch=FetchType.EAGER , cascade = CascadeType.ALL)
 	private Set<Maintenance> maintenances;
 
 	public Machine() {

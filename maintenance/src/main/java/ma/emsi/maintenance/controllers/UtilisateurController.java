@@ -55,8 +55,70 @@ public class UtilisateurController {
 	    return Id;
 	   
 	  }
-	
-	
+	 
+	 @RequestMapping("/login")  
+	   public ModelAndView login(HttpServletRequest request,
+			   HttpServletResponse response) {
+		  String login=request.getParameter("login");  
+	      String password=request.getParameter("password");
+	      
+	     
+	      
+	      String message;
+	    //  utilisateurservice.getUtilisateur()
+	      if(   	     	  
+	    		  login != null && !login.equals("") && 
+	    		  password != null && !password.equals(""))
+	    		      {
+	    			  if( getIdByLogin(login)>0) { ///////// Si l'utilisateur avec le login definie existe
+	    				Utilisateur U= utilisateurService.getUtilisateur(getIdByLogin(login));
+	    				      if(password.equals(U.getMdp())) {  ////////// Si  Mot de passe correcte
+	    				      	 
+	    				    	    if(U.getType().equals("DT")) {
+	    				    	  
+	    				    	  message = "Welcome " +login + ".";           /////////// if DT
+	    					      return new ModelAndView("indexDT", 
+	    					    		  "message", message);  
+	    				    	    }
+	    				    	    else if(U.getType().equals("CA")) {           //////////// if CA
+	    				    	    	 message = "Welcome " +login + ".";
+	   	    					      return new ModelAndView("indexCA", 
+	   	    					    		  "message", message);  
+	    				    	    }
+	    				    	    else {
+	    				    	    	message = "Welcome " +login + ".";                     //////  an other
+		   	    					      return new ModelAndView("index", 
+		   	    					    		  "message", message);  
+	    				    	    }
+	    				      
+	    				      
+	    				      } else{
+	    				  	    	  message = "Faux mot de passe.";
+	    					    	  return new ModelAndView("errorPage", 
+	    					    			  "message", message);
+	    					      }
+	    			              
+	    			  }   else{
+	    		    	  message = "Aucun Utilisateur pour cet login";
+	    		    	  return new ModelAndView("errorPage", 
+	    		    			  "message", message);
+	    		      }
+	    		  
+	    		     }
+	      else{
+	    	  message = "Wrong username or password.";
+	    	  return new ModelAndView("errorPage", 
+	    			  "message", message);
+	      }
+	     
+	   
+	      
+	     
+	   }
+
+	 
+	 /*
+		
 	 @RequestMapping("/login")  
 	   public ModelAndView login(HttpServletRequest request,
 			   HttpServletResponse response) {
@@ -100,7 +162,9 @@ public class UtilisateurController {
 	      
 	     
 	   }
-	
+	*/
 	 }
+	 
+	 
 	 
 

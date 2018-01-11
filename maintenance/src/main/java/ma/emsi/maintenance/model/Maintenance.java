@@ -37,12 +37,15 @@ public class Maintenance {
 	
 	 //bi-directional many-to-one association to Machine
 		@ManyToOne
-		@JoinColumn(name="idMachine")
+        @JoinColumn(name="idMachine")
 		private Machine machine;
 		//bi-directional many-to-one association to Intervention
 		@OneToMany(mappedBy="maintenance", fetch=FetchType.EAGER)
 		private Set<Intervention> interventions;
-
+     
+		@Column(insertable=false , updatable=false)
+		private String type;
+		
 		public String getNature() {
 			return nature;
 		}
@@ -57,6 +60,46 @@ public class Maintenance {
 
 		public void setMachine(Machine machine) {
 			this.machine = machine;
+		}
+
+		public int getIdUtilisateur() {
+			return idUtilisateur;
+		}
+
+		public void setIdUtilisateur(int idUtilisateur) {
+			this.idUtilisateur = idUtilisateur;
+		}
+
+		public byte getResolut() {
+			return resolut;
+		}
+
+		public void setResolut(byte resolut) {
+			this.resolut = resolut;
+		}
+
+		public Date getResolutDateTime() {
+			return resolutDateTime;
+		}
+
+		public void setResolutDateTime(Date resolutDateTime) {
+			this.resolutDateTime = resolutDateTime;
+		}
+
+		public Set<Intervention> getInterventions() {
+			return interventions;
+		}
+
+		public void setInterventions(Set<Intervention> interventions) {
+			this.interventions = interventions;
+		}
+
+		public String getType() {
+			return type;
+		}
+
+		public void setType(String type) {
+			this.type = type;
 		}
 		
 		
